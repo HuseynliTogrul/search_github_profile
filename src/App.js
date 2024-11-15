@@ -8,6 +8,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   async function fetchGithubUserData() {
     if (!userName.trim()) return;
@@ -41,29 +42,47 @@ function App() {
     fetchGithubUserData();
   }
 
+  const handleDarkLight = () => {
+    document.body.classList.toggle("dark-mode");
+    setIsDarkMode(!isDarkMode)
+  };
+
   return (
     <div className="github-profile-container">
-      {/* <div className="lightIcon">
-        <CiLight />
-      </div>
-      <div className="moonIcon">
-        <FaMoon />
-      </div> */}
-      <div className="input-wrapper">
-        <input
-          className="searchInput"
-          type="text"
-          placeholder="Search Github Username..."
-          value={userName}
-          onChange={(event) => setUserName(event.target.value)}
-          onKeyDown={handleKeyEnter}
-        />
-        <button
-          className="searchBtn"
-          onClick={handleSubmit}
-        >
-          Search
-        </button>
+      <div className="github-profile">
+        <div className="darkLight">
+          {!isDarkMode ? (
+            <div
+              onClick={handleDarkLight}
+              className="lightIcon"
+            >
+              <CiLight />
+            </div>
+          ) : (
+            <div
+              onClick={handleDarkLight}
+              className="darkIcon"
+            >
+              <FaMoon />
+            </div>
+          )}
+        </div>
+        <div className="input-wrapper">
+          <input
+            className="searchInput"
+            type="text"
+            placeholder="Search Github Username..."
+            value={userName}
+            onChange={(event) => setUserName(event.target.value)}
+            onKeyDown={handleKeyEnter}
+          />
+          <button
+            className="searchBtn"
+            onClick={handleSubmit}
+          >
+            Search
+          </button>
+        </div>
       </div>
       {loading ? (
         <h1>Loading data! Please wait...</h1>

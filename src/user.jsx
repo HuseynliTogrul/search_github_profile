@@ -1,9 +1,10 @@
-const User = ({ user }) => {
+const User = ({ user, isDarkMode }) => {
     const { avatar_url, followers, following, public_repos, login, name, created_at, bio } = user;
 
     const createdAt = new Date(created_at)
+
     return (
-        <div className='user'>
+        <div className="user">
             <div>
                 <img src={avatar_url} className='avatar' alt="User" />
             </div>
@@ -11,7 +12,7 @@ const User = ({ user }) => {
                 <div className="userInfoLeft">
                     <div>
                         <div className="userName">
-                            <p>{name ? name: "No name"}</p>
+                            <p>{name ? name : "No name"}</p>
                         </div>
                         <div className="userGitLink">
                             <a href={`https://github.com/${login}`}>@{login}</a>
@@ -29,7 +30,7 @@ const User = ({ user }) => {
                         }
                     </p>
                 </div>
-                <div className="cardProfileInfo">
+                <div className={`cardProfileInfo ${isDarkMode ? 'darkMode' : 'lightMode'}`}>
                     <div className="publicRepo">
                         <p><b>Repos</b></p>
                         <p>{public_repos}</p>

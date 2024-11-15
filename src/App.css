@@ -4,8 +4,21 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-text-color: #ffffff;
+    --primary-bg-color: #141d2f;
+    --secondary-bg-color: #1e2a47;
+}
+
+.dark-mode {
+    --primary-text-color: #141d2f;
+    --primary-bg-color: #f6f8ff;
+    --secondary-bg-color: #fff;
+}
+
 body {
-    background-color: #141d2f;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -19,6 +32,7 @@ body {
 }
 
 .input-wrapper {
+    border-radius: 10px;
     width: 600px;
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -27,7 +41,7 @@ body {
 .searchInput {
     color: rgba(255, 255, 255, 0.717);
     font-size: 16px;
-    background-color: #1e2a47;
+    background-color: var(--secondary-bg-color);
     padding: 15px;
     border-radius: 10px 0 0 10px;
     border-right: none;
@@ -54,8 +68,8 @@ body {
     padding: 40px;
     width: 50%;
     margin-top: 15px;
-    background-color: #1e2a47;
-    color: white;
+    background-color: var(--secondary-bg-color);
+    color: var(--primary-text-color);
     display: flex;
     gap: 10px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -95,7 +109,8 @@ body {
 .cardProfileInfo {
     display: flex;
     justify-content: space-between;
-    background: #141d2f;
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
     padding: 25px;
     border-radius: 10px;
     text-align: center;
@@ -113,4 +128,24 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+.darkLight {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 15px;
+}
+
+.lightIcon,
+.darkIcon {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.lightIcon {
+    color: var(--primary-text-color);
+}
+
+.github-profile-container {
+    transition: all 0.3s ease-in-out;
 }
