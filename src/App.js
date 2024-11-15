@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import User from "./user";
+import { CiLight } from "react-icons/ci";
+import { FaMoon } from "react-icons/fa";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -13,6 +15,7 @@ function App() {
     setLoading(true);
     const res = await fetch(`https://api.github.com/users/${userName}`);
     const data = await res.json();
+    console.log(data);
 
     if (data.message === "Not Found") {
       setUserData();
@@ -40,6 +43,12 @@ function App() {
 
   return (
     <div className="github-profile-container">
+      {/* <div className="lightIcon">
+        <CiLight />
+      </div>
+      <div className="moonIcon">
+        <FaMoon />
+      </div> */}
       <div className="input-wrapper">
         <input
           className="searchInput"
